@@ -1,0 +1,627 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "teamRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "treasuryRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "lpRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "creatorCuratorRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "witnessRewardsPercent",
+        "type": "uint256"
+      }
+    ],
+    "name": "SetDistribution",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAccount",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "teamAccount",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "treasuryAccount",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "witnessAccount",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "creatorCuratorAccount",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "polyLiquidityRewardsAccount",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "ethLiquidityRewardsAccount",
+        "type": "address"
+      }
+    ],
+    "name": "SetProtocolAccounts",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "intervalRewards",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "lastIntervalTime",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "teamReward",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "treasuryReward",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "polyLpReward",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethLpReward",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "creatorCuratorReward",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "witnessReward",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpdateInterval",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "polyLiquidityRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethLiquidityRewardsPercent",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpdateLiquidityRewardsPercentages",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "PERCENTAGE_SCALE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDistribution",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_teamRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_treasuryRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_lpRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_creatorCuratorRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_witnessRewardsPercent",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLatestInterval",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_lastIntervalTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_intervalRewards",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getProtocolAccounts",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "_tokenAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_teamAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasuryAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_creatorCuratorAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_witnessAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_polyLiquidityRewardsAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_ethLiquidityRewardsAccount",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "hasRole",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_tokenAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_teamAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasuryAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_creatorCuratorAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_witnessAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_polyLiquidityRewardsAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_ethLiquidityRewardsAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_intervalRewards",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_lastIntervalTime",
+        "type": "uint256"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_teamRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_treasuryRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_lpRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_creatorCuratorRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_witnessRewardsPercent",
+        "type": "uint256"
+      }
+    ],
+    "name": "setDistribution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_tokenAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_teamAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasuryAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_creatorCuratorAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_witnessAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_polyLiquidityRewardsAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_ethLiquidityRewardsAccount",
+        "type": "address"
+      }
+    ],
+    "name": "setProtocolAccounts",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "updateInterval",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_polyLiquidityRewardsPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_ethLiquidityRewardsPercent",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateLiquidityRewardsPercentages",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

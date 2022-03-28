@@ -1,0 +1,10 @@
+type UpdateIntervalEntity @entity {
+  id: ID!
+  intervalRewards: BigInt!,
+  teamReward: BigInt!,
+  treasuryReward:BigInt!,
+  polyLpReward:BigInt!,
+  ethLpReward:BigInt!,
+  creatorCuratorReward:BigInt!,
+  witnessReward:BigInt!,
+}
